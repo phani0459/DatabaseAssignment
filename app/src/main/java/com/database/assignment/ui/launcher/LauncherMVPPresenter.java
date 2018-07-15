@@ -17,8 +17,6 @@ public interface LauncherMVPPresenter<V extends LauncherView> extends MvpPresent
 
     void getSelectedContact(String contactId);
 
-    void getExtensionByContat(Contacts contact);
-
-    void getAccountByExtension(Extensions extension);
+    void getAccountByExtension(int id);
 
 }

@@ -22,8 +22,6 @@ public interface LauncherView extends BaseView {
 
     void onContactSelected(Contacts contact);
 
-    void onExtensionLoaded(Extensions extension);
-
     void onAccountLoaded(Accounts account);
 
 }

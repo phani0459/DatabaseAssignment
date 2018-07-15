@@ -85,17 +85,12 @@ public class LauncherActivity extends BaseActivity implements LauncherView{
     @Override
     public void onContactSelected(Contacts contact) {
         statgingTextView.setText("Staging Id: " + contact.getStagingId());
-        mPresenter.getExtensionByContat(contact);
-    }
-
-    @Override
-    public void onExtensionLoaded(Extensions extension) {
-        contextTextView.setText("Context: " + extension.getContext());
-        mPresenter.getAccountByExtension(extension);
+        mPresenter.getAccountByExtension(contact.get_id());
     }
 
     @Override
     public void onAccountLoaded(Accounts account) {
+        contextTextView.setText("Context: " + account.getContext());
         statusTextView.setText("Status: " + account.getStatus());
         userIdTextView.setText("User: " + account.getUserID());
     }

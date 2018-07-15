@@ -47,7 +47,7 @@ public class LauncherPresenter<V extends LauncherView> extends BasePresenter<V> 
         LocalCacheManager.getInstance(context).addContacts(this, 4, "2cac", "036e");
 
         LocalCacheManager.getInstance(context).addExtensions(this, "Gmail", 2);
-        LocalCacheManager.getInstance(context).addExtensions(this, "Gmail", 3);
+        LocalCacheManager.getInstance(context).addExtensions(this, "Gmail2", 3);
         LocalCacheManager.getInstance(context).addExtensions(this, "Gmail1", 4);
 
         LocalCacheManager.getInstance(context).addAccounts(this, "1", "test_one@gmail.com", "Gmail", false);
@@ -66,14 +66,8 @@ public class LauncherPresenter<V extends LauncherView> extends BasePresenter<V> 
     }
 
     @Override
-    public void getExtensionByContat(Contacts contact) {
-        Log.e("TAGTAG", "getExtensionByContat: " );
-        LocalCacheManager.getInstance(context).getExtensionsById(this, contact);
-    }
-
-    @Override
-    public void getAccountByExtension(Extensions extension) {
-        LocalCacheManager.getInstance(context).getAccount(this, extension);
+    public void getAccountByExtension(int id) {
+        LocalCacheManager.getInstance(context).getAccount(this, id);
     }
 
     @Override
@@ -103,11 +97,6 @@ public class LauncherPresenter<V extends LauncherView> extends BasePresenter<V> 
     @Override
     public void singleContact(Contacts contact) {
         getMvpView().onContactSelected(contact);
-    }
-
-    @Override
-    public void singleExtension(Extensions extension) {
-        getMvpView().onExtensionLoaded(extension);
     }
 
     @Override

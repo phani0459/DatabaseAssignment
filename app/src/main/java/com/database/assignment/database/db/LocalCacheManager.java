@@ -48,23 +48,12 @@ public class LocalCacheManager {
         });
     }
 
-    public void getAccount(final DatabaseCallBack databaseCallback, final Extensions extension) {
-        db.accountsDao().getAccountByContext(extension.getContext()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Accounts>() {
+    public void getAccount(final DatabaseCallBack databaseCallback, final int id) {
+        db.accountsDao().getAccountByContext(id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Accounts>() {
 
             @Override
             public void accept(@io.reactivex.annotations.NonNull Accounts account) throws Exception {
                 databaseCallback.singleAccount(account);
-            }
-
-        });
-    }
-
-    public void getExtensionsById(final DatabaseCallBack databaseCallback, final Contacts contact) {
-        db.extensionsDao().getExtensionById(contact.get_id()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Extensions>() {
-
-            @Override
-            public void accept(@io.reactivex.annotations.NonNull Extensions extension) throws Exception {
-                databaseCallback.singleExtension(extension);
             }
 
         });

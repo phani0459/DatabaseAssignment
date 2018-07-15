@@ -25,7 +25,10 @@ public interface AccountsDao {
     Flowable<List<Accounts>> loadByDates(String dates);
 
     @Query("SELECT * FROM " + Constants.ACNTS_TABLE_NAME + " WHERE context IN (:context)")
-    Flowable<Accounts> getAccountByContext(String context);
+    Flowable<Accounts> getAccountFromExtension(String context);
+
+    @Query("SELECT * FROM " + Constants.ACNTS_TABLE_NAME + " WHERE context IN (SELECT context FROM " + Constants.EXTNS_TABLE_NAME + " WHERE phoneContactId = (:id))")
+    Flowable<Accounts> getAccountByContext(int id);
 
     @Insert
     void insert(Accounts user);

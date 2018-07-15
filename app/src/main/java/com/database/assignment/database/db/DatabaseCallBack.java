@@ -17,8 +17,6 @@ public interface DatabaseCallBack {
 
     void singleContact(Contacts contact);
 
-    void singleExtension(Extensions extension);
-
     void singleAccount(Accounts accounts);
 
 }
